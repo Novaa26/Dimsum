@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nav Overshoot Smooth</title>
+  <style>
+    :root {
+      --bg: #e9c33f;
+    }
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #ff0000;
+    }
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 190px;
+      /* opacity: 0.7; */
+      background-image: url(aset/f75986841978c5dea0b3c198a420f51b.jpg);
+    }
+    nav {
+      position: fixed;
+      width: 100%;
+      height: 70px;
+      /* background: #fff; */
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+    }
+    .nav-left,
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    nav a {
+      position: relative;
+      display: inline-block;
+      font-size: 1em;
+      font-weight: 900;
+      color: #000000;
+      text-decoration: none;
+      padding: 0 35px;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .logo {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: yellow;
+      cursor: default;
+    }
+    nav span {
+      position: absolute;
+      top: 22px;
+      height: 40%;
+      background-color: var(--bg);
+      border: aliceblue 2px solid ;
+      border-radius: 30px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes overshoot {
+      0%   { left: var(--from-left); width: var(--from-width); }
+      50%  { left: var(--overshoot-left); width: var(--to-width); }
+      100% { left: var(--to-left); width: var(--to-width); }
+    }
+  .nama {
+    background-image: url("aset/file_000000008718623085358ba98f4561a3.png");
+    background-position: center;   /* Fokus di tengah gambar */
+    background-repeat: no-repeat;  /* Jangan mengulang gambar */
+    width: 100%;                   /* Penuhi lebar layar */
+    height: 80vh;                 /* Penuhi tinggi layar */
+    display: flex;                 /* Untuk memudahkan penempatan konten di tengah */
+    justify-content: center;       
+    align-items: center;
+    position: relative;            /* Bisa untuk overlay jika diperlukan */
+      mix-blend-mode: lighten;
+  }
+  .menu {
+    width: 100%;
+    background-color: #000000;
+  }
+  .menu img{
+    width: 100%;
+    height: 100%;
+    margin-left: 0px;
+  }
+      h1 {
+      color: #e24d2c;
+      font-size: 2rem;
+      margin-top: 30px;
+    }
+
+    p.subtitle {
+      color: #1a1a1a;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin: 20px 0;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin: 0 0 8px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px;
+      background: #d60000;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #a80000;
+    }
+
+    .btn i {
+      font-style: normal; /* nanti bisa diganti icon fontawesome */
+    }
+
+    .more {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .btn-more {
+      padding: 12px 25px;
+      background: #ffdd00;
+      color: #000;
+      font-weight: bold;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-more:hover {
+      background: #e6c800;
+    }
+    .paket {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      text-align: center;
+      background-color: aliceblue;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-left">
+        <a>Home</a>
+        <a>About</a>
+        <a>Service</a>
+      </div>
+      <div class="logo">Logo</div>
+      <div class="nav-right">
+        <a>Portfolio</a>
+        <a>Contact</a>
+      </div>
+      <span></span>
+    </nav>
+  </header>
+  <div class="nama">
+    <h1></h1>
+  </div>
+
+  <!-- <div class="menu">
+    <img src="aset/New Project 151 [AAEADF0] (Edited).png" alt="">
+  </div> -->
+<div class="paket">
+   <h1>Kami Tahu Apa Yang Kamu Mau</h1>
+  <p class="subtitle">Nikmati 30+ Varian Menu Dimsum Halal Yang Lezat</p>
+  <h2>Paket</h2>
+
+  <div class="container">
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Bola Rambutan">
+      <div class="card-body">
+        <h3>Bola Rambutan</h3>
+        <p>Isi: Daging ayam, Bawang Bombai, Daun bawang</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Keichak">
+      <div class="card-body">
+        <h3>Keichak</h3>
+        <p>Isi: Daging ayam, Wortel buah, Jamur kuping</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Lumpia Jamur">
+      <div class="card-body">
+        <h3>Lumpia Jamur</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Siomay Mozarela">
+      <div class="card-body">
+        <h3>Siomay Mozarela</h3>
+        <p>Isi: Daging ayam, Mozarela, Keju</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
+      <div class="card-body">
+        <h3>Siomay Sayur</h3>
+        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+        <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Siomay Mozarela">
+      <div class="card-body">
+        <h3>Siomay Mozarela</h3>
+        <p>Isi: Daging ayam, Mozarela, Keju</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
+      <div class="card-body">
+        <h3>Siomay Sayur</h3>
+        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+        <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Siomay Mozarela">
+      <div class="card-body">
+        <h3>Siomay Mozarela</h3>
+        <p>Isi: Daging ayam, Mozarela, Keju</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
+      <div class="card-body">
+        <h3>Siomay Sayur</h3>
+        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+        <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Siomay Mozarela">
+      <div class="card-body">
+        <h3>Siomay Mozarela</h3>
+        <p>Isi: Daging ayam, Mozarela, Keju</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
+      <div class="card-body">
+        <h3>Siomay Sayur</h3>
+        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
+      <div class="card-body">
+        <h3>Siomay Sayur</h3>
+        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+    </div>
+    
+    <!-- Tambahkan card lainnya sesuai kebutuhan -->
+
+  </div>
+
+  <div class="more">
+    <button class="btn-more">Produk Lainnya</button>
+  </div>
+</div>
+  <script>
+    const links = document.querySelectorAll("nav a");
+    const indicator = document.querySelector("nav span");
+    let currentLeft = 0;
+    let currentWidth = 0;
+
+    function moveIndicator(target) {
+      const { offsetLeft, offsetWidth } = target;
+      const distance = offsetLeft - currentLeft;
+
+      // Overshoot dengan arah disesuaikan
+      const overshootDistance = Math.min(Math.max(Math.abs(distance) * 0.2, 1), 10);
+      const overshoot = offsetLeft + (distance > 0 ? overshootDistance : -overshootDistance);
+
+      // Durasi animasi berdasarkan jarak
+      const duration = Math.min(0.3 + Math.abs(distance) / 400, 0.8);
+
+      indicator.style.setProperty("--from-left", currentLeft + "px");
+      indicator.style.setProperty("--from-width", currentWidth + "px");
+      indicator.style.setProperty("--to-left", offsetLeft + "px");
+      indicator.style.setProperty("--to-width", offsetWidth + "px");
+      indicator.style.setProperty("--overshoot-left", overshoot + "px");
+
+      indicator.style.animation = "none";
+      indicator.offsetHeight; // reflow
+      indicator.style.animation = `overshoot ${duration}s cubic-bezier(0.7,1,0.7,0.9) forwards`;
+
+      currentLeft = offsetLeft;
+      currentWidth = offsetWidth;
+    }
+
+    links.forEach(link => {
+      link.addEventListener("click", () => moveIndicator(link));
+    });
+
+    window.addEventListener("load", () => {
+      const first = links[0];
+      currentLeft = first.offsetLeft;
+      currentWidth = first.offsetWidth;
+      indicator.style.left = currentLeft + "px";
+      indicator.style.width = currentWidth + "px";
+    });
+  </script>
+</body>
+</html>
