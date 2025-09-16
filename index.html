@@ -212,6 +212,156 @@
       text-align: center;
       background-color: aliceblue;
     }
+
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      background: #fff;
+      padding: 10px 15px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: red;
+      color: white;
+      font-size: 0.8rem;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
+
+
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin: 0 0 8px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px;
+      background: #d60000;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #a80000;
+    }
+
+    .more {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .btn-more {
+      padding: 12px 25px;
+      background: #ffdd00;
+      color: #000;
+      font-weight: bold;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-more:hover {
+      background: #e6c800;
+    }
+
+    /* modal keranjang */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .close {
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .cart-items {
+      margin: 15px 0;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .cart-items div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .cart-total {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .purchase-date {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #444;
+    }
   </style>
 </head>
 <body>
@@ -242,6 +392,12 @@
   <p class="subtitle">Nikmati 30+ Varian Menu Dimsum Halal Yang Lezat</p>
   <h2>Paket</h2>
 
+
+  <!-- Icon keranjang -->
+  <div class="cart-icon" id="cartIcon">
+    🛒<span class="cart-count" id="cartCount">0</span>
+  </div>
+
   <div class="container">
     <div class="card">
       <img src="https://via.placeholder.com/300x200" alt="Bola Rambutan">
@@ -271,85 +427,46 @@
     </div>
 
     <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Keichak">
+      <div class="card-body">
+        <h3>Keichak</h3>
+        <p>Isi: Daging ayam, Wortel buah, Jamur kuping</p>
+        <button class="btn" onclick="addToCart('Keichak', 16000)">Pesan Sekarang 🛒</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200" alt="Lumpia Jamur">
+      <div class="card-body">
+        <h3>Lumpia Jamur</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn" onclick="addToCart('Lumpia Jamur', 17000)">Pesan Sekarang 🛒</button>
+      </div>
+    </div>
+
+    <div class="card">
       <img src="https://via.placeholder.com/300x200" alt="Siomay Mozarela">
       <div class="card-body">
         <h3>Siomay Mozarela</h3>
         <p>Isi: Daging ayam, Mozarela, Keju</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Siomay Mozarela', 18000)">Pesan Sekarang 🛒</button>
       </div>
     </div>
+  </div>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
-      <div class="card-body">
-        <h3>Siomay Sayur</h3>
-        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+  <!-- Modal keranjang -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Keranjang Belanja</h3>
+        <span class="close" onclick="closeCart()">&times;</span>
       </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-total" id="cartTotal">Total: Rp 0</div>
+      <div class="purchase-date" id="purchaseDate"></div>
+      <button class="pay-btn" onclick="payNow()">Bayar</button>
     </div>
-
-        <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Siomay Mozarela">
-      <div class="card-body">
-        <h3>Siomay Mozarela</h3>
-        <p>Isi: Daging ayam, Mozarela, Keju</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
-      <div class="card-body">
-        <h3>Siomay Sayur</h3>
-        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
-      </div>
-    </div>
-
-        <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Siomay Mozarela">
-      <div class="card-body">
-        <h3>Siomay Mozarela</h3>
-        <p>Isi: Daging ayam, Mozarela, Keju</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
-      <div class="card-body">
-        <h3>Siomay Sayur</h3>
-        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
-      </div>
-    </div>
-
-        <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Siomay Mozarela">
-      <div class="card-body">
-        <h3>Siomay Mozarela</h3>
-        <p>Isi: Daging ayam, Mozarela, Keju</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
-      <div class="card-body">
-        <h3>Siomay Sayur</h3>
-        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Siomay Sayur">
-      <div class="card-body">
-        <h3>Siomay Sayur</h3>
-        <p>Isi: Daging ayam, Wortel, Jamur, Jagung, Polong</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
-      </div>
-    </div>
+  </div>
     
     <!-- Tambahkan card lainnya sesuai kebutuhan -->
 
@@ -401,6 +518,67 @@
       indicator.style.left = currentLeft + "px";
       indicator.style.width = currentWidth + "px";
     });
+
+
+    // fungsi keranjang
+  let cart = [];
+    let total = 0;
+
+    function addToCart(product, price) {
+      cart.push({ product, price });
+      total += price;
+      document.getElementById('cartCount').textContent = cart.length;
+      alert(product + " ditambahkan ke keranjang!");
+    }
+
+    function removeFromCart(index) {
+      total -= cart[index].price;
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cartItems');
+      cartItems.innerHTML = '';
+      cart.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <span>${item.product}</span>
+          <span>Rp ${item.price.toLocaleString()}</span>
+          <button class="remove-btn" onclick="removeFromCart(${index})">❌</button>
+        `;
+        cartItems.appendChild(div);
+      });
+      document.getElementById('cartTotal').textContent = "Total: Rp " + total.toLocaleString();
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString("id-ID", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('purchaseDate').textContent = "Tanggal Pembelian: " + dateStr;
+
+      document.getElementById('cartCount').textContent = cart.length;
+    }
+
+    document.getElementById('cartIcon').addEventListener('click', () => {
+      updateCart();
+      document.getElementById('cartModal').style.display = 'flex';
+    });
+
+    function closeCart() {
+      document.getElementById('cartModal').style.display = 'none';
+    }
+
+    function payNow() {
+      if(cart.length === 0) {
+        alert("Keranjang masih kosong!");
+        return;
+      }
+      alert("Pembayaran berhasil!\nTotal: Rp " + total.toLocaleString());
+      cart = [];
+      total = 0;
+      updateCart();
+      closeCart();
+    }
   </script>
 </body>
 </html>
