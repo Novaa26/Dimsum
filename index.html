@@ -3,366 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nav Overshoot Smooth</title>
-  <style>
-    :root {
-      --bg: #e9c33f;
-    }
-    * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
-    body {
-      justify-content: center;
-      min-height: 100vh;
-      background-color: #ff0000;
-    }
-    header {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      height: 190px;
-      /* opacity: 0.7; */
-      background-image: url(aset/f75986841978c5dea0b3c198a420f51b.jpg);
-    }
-    nav {
-      position: fixed;
-      width: 100%;
-      height: 70px;
-      /* background: #fff; */
-      backdrop-filter: blur(10px);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 15px;
-    }
-    .nav-left,
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    nav a {
-      position: relative;
-      display: inline-block;
-      font-size: 1em;
-      font-weight: 900;
-      color: #000000;
-      text-decoration: none;
-      padding: 0 35px;
-      z-index: 1;
-      cursor: pointer;
-    }
-    .logo {
-      font-size: 1.2em;
-      font-weight: bold;
-      color: yellow;
-      cursor: default;
-    }
-    nav span {
-      position: absolute;
-      top: 22px;
-      height: 40%;
-      background-color: var(--bg);
-      border: aliceblue 2px solid ;
-      border-radius: 30px;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    @keyframes overshoot {
-      0%   { left: var(--from-left); width: var(--from-width); }
-      50%  { left: var(--overshoot-left); width: var(--to-width); }
-      100% { left: var(--to-left); width: var(--to-width); }
-    }
-  .nama {
-    background-image: url("aset/file_000000008718623085358ba98f4561a3.png");
-    background-position: center;   /* Fokus di tengah gambar */
-    background-repeat: no-repeat;  /* Jangan mengulang gambar */
-    width: 100%;                   /* Penuhi lebar layar */
-    height: 80vh;                 /* Penuhi tinggi layar */
-    display: flex;                 /* Untuk memudahkan penempatan konten di tengah */
-    justify-content: center;       
-    align-items: center;
-    position: relative;            /* Bisa untuk overlay jika diperlukan */
-      mix-blend-mode: lighten;
-  }
-  .menu {
-    width: 100%;
-    background-color: #000000;
-  }
-  .menu img{
-    width: 100%;
-    height: 100%;
-    margin-left: 0px;
-  }
-      h1 {
-      color: #e24d2c;
-      font-size: 2rem;
-      margin-top: 30px;
-    }
-
-    p.subtitle {
-      color: #1a1a1a;
-      font-size: 1rem;
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      margin: 20px 0;
-      color: #222;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 10px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 15px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card h3 {
-      font-size: 1.1rem;
-      margin: 0 0 8px;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: #444;
-      margin-bottom: 15px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px;
-      background: #d60000;
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-    }
-
-    .btn:hover {
-      background: #a80000;
-    }
-
-    .btn i {
-      font-style: normal; /* nanti bisa diganti icon fontawesome */
-    }
-
-    .more {
-      text-align: center;
-      margin: 30px 0;
-    }
-
-    .btn-more {
-      padding: 12px 25px;
-      background: #ffdd00;
-      color: #000;
-      font-weight: bold;
-      border-radius: 25px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-more:hover {
-      background: #e6c800;
-    }
-    .paket {
-      padding-top: 30px;
-      padding-bottom: 30px;
-      text-align: center;
-      background-color: aliceblue;
-    }
-
-    .cart-icon {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      font-size: 1.5rem;
-      background: #fff;
-      padding: 10px 15px;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background: red;
-      color: white;
-      font-size: 0.8rem;
-      padding: 2px 6px;
-      border-radius: 50%;
-    }
-
-
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 15px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card h3 {
-      font-size: 1.1rem;
-      margin: 0 0 8px;
-    }
-
-    .card p {
-      font-size: 0.9rem;
-      color: #444;
-      margin-bottom: 15px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px;
-      background: #d60000;
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-    }
-
-    .btn:hover {
-      background: #a80000;
-    }
-
-    .more {
-      text-align: center;
-      margin: 30px 0;
-    }
-
-    .btn-more {
-      padding: 12px 25px;
-      background: #ffdd00;
-      color: #000;
-      font-weight: bold;
-      border-radius: 25px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-more:hover {
-      background: #e6c800;
-    }
-
-    /* modal keranjang */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 500px;
-      width: 90%;
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .close {
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-
-    .cart-items {
-      margin: 15px 0;
-      max-height: 250px;
-      overflow-y: auto;
-    }
-
-    .cart-items div {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .cart-total {
-      font-weight: bold;
-      margin-top: 15px;
-    }
-
-    .purchase-date {
-      font-size: 0.9rem;
-      margin-top: 10px;
-      color: #444;
-    }
-  </style>
+  <title>Dimsumliciuos</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
@@ -399,59 +41,172 @@
   </div>
 
   <div class="container">
+
+       <div class="card">
+      <img src="aset/dimsum.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Dimsum</h3>
+        <p>Isi: Daging ayam, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
     <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Bola Rambutan">
+      <img src="aset/dimsum jamur.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Dimsum Jamur</h3>
+        <p>Isi: Daging ayam, Wortel, Jamur kuping</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+    <div class="card">
+      <img src="aset/dimsum mentai.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Dimsum Mentai</h3>
+        <p>Isi: Daging ayam, Wortel, Mentai, Rumput Laut</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+    <div class="card">
+      <img src="aset/dimsum mozarela.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Dimsum Mozarela</h3>
+        <p>Isi: Daging ayam, Wortel, keju Mozarela</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+
+    <div class="card">
+      <img src="aset/Bola Rambutan.webp" alt="Bola Rambutan">
       <div class="card-body">
         <h3>Bola Rambutan</h3>
-        <p>Isi: Daging ayam, Bawang Bombai, Daun bawang</p>
+        <p>Isi: Daging ayam, Kulit Pangsit</p>
         <button class="btn">Pesan Sekarang <i>🛒</i></button>
       </div>
     </div>
 
     <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Keichak">
+      <img src="aset/keichak.webp" alt="Keichak">
       <div class="card-body">
         <h3>Keichak</h3>
-        <p>Isi: Daging ayam, Wortel buah, Jamur kuping</p>
+        <p>Isi: Daging ayam, Wortel, Jamur Shitake, Baby Corn, Kulit Tahu</p>
         <button class="btn">Pesan Sekarang <i>🛒</i></button>
       </div>
     </div>
 
     <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Lumpia Jamur">
+      <img src="aset/lumpia jamur.webp" alt="Lumpia Jamur">
       <div class="card-body">
         <h3>Lumpia Jamur</h3>
-        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel, Kecambah</p>
         <button class="btn">Pesan Sekarang <i>🛒</i></button>
       </div>
     </div>
 
     <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Keichak">
+      <img src="aset/cheong fan.webp" alt="cheong fan">
       <div class="card-body">
-        <h3>Keichak</h3>
+        <h3>Cheong Fan</h3>
         <p>Isi: Daging ayam, Wortel buah, Jamur kuping</p>
         <button class="btn" onclick="addToCart('Keichak', 16000)">Pesan Sekarang 🛒</button>
       </div>
     </div>
 
     <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Lumpia Jamur">
+      <img src="aset/gyoza.webp" alt="Lumpia Jamur">
       <div class="card-body">
-        <h3>Lumpia Jamur</h3>
+        <h3>Gyoza</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
         <button class="btn" onclick="addToCart('Lumpia Jamur', 17000)">Pesan Sekarang 🛒</button>
       </div>
     </div>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/300x200" alt="Siomay Mozarela">
+  <div class="card">
+      <img src="aset/ekado.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Siomay Mozarela</h3>
-        <p>Isi: Daging ayam, Mozarela, Keju</p>
-        <button class="btn" onclick="addToCart('Siomay Mozarela', 18000)">Pesan Sekarang 🛒</button>
+        <h3>Ekado</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
       </div>
-    </div>
+  </div>
+    <div class="card">
+      <img src="aset/ebi furai.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Ebi Furai</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+    <div class="card">
+      <img src="aset/katsu.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Chiken Katsu</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+    <div class="card">
+      <img src="aset/enoki.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Enoki</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+    <div class="card">
+      <img src="aset/karage.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Chiken Karage</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+    <div class="card">
+      <img src="aset/kakiage.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Kakiage</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+      <div class="card">
+      <img src="aset/seaweed rool.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Seaweed Rool</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+      <div class="card">
+      <img src="aset/fried fries.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Fried Fries</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+      <div class="card">
+      <img src="aset/takoyaki.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Takoyaki</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+        <div class="card">
+      <img src="aset/corn ribs.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Corn Ribs</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
+  </div>
+        <div class="card">
+      <img src="aset/omelet.webp" alt="Dimsum">
+      <div class="card-body">
+        <h3>Omelet</h3>
+        <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
+        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+      </div>
   </div>
 
   <!-- Modal keranjang -->
