@@ -1,0 +1,324 @@
+   :root {
+      --bg: #e9c33f;
+    }
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body {
+      justify-content: center;
+      min-height: 100vh;
+      background-color: aliceblue;
+      /* background-color: white; */
+    }
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 40vh;
+      /* opacity: 0.7; */
+      background-image: url(aset/Mount\ Fuji\ in\ Japan.webp);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    nav {
+      position: fixed;
+      width: 100%;
+      height: 70px;
+      /* background: #fff; */
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      z-index: 2;
+    }
+    .nav-left,
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    nav a {
+      position: relative;
+      display: inline-block;
+      font-size: 1em;
+      font-weight: 900;
+      color: #000000;
+      text-decoration: none;
+      padding: 0 35px;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .logo {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: yellow;
+      cursor: default;
+    }
+    nav span {
+      position: absolute;
+      top: 22px;
+      height: 40%;
+      background-color: var(--bg);
+      border: aliceblue 2px solid ;
+      border-radius: 30px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes overshoot {
+      0%   { left: var(--from-left); width: var(--from-width); }
+      50%  { left: var(--overshoot-left); width: var(--to-width); }
+      100% { left: var(--to-left); width: var(--to-width); }
+    }
+  .nama {
+    background-image: url("aset/file_000000008718623085358ba98f4561a3.png");
+    background-position: center;   /* Fokus di tengah gambar */
+    background-repeat: no-repeat;  /* Jangan mengulang gambar */
+    width: 100%;                   /* Penuhi lebar layar */
+    height: 80vh;                 /* Penuhi tinggi layar */
+    display: flex;                 /* Untuk memudahkan penempatan konten di tengah */
+    justify-content: center;       
+    align-items: center;
+    position: relative;            /* Bisa untuk overlay jika diperlukan */
+      mix-blend-mode: lighten;
+  }
+  .menu {
+    width: 100%;
+    background-color: #000000;
+  }
+  .menu img{
+    width: 100%;
+    height: 100%;
+    margin-left: 0px;
+  }
+      h1 {
+      color: #e24d2c;
+      font-size: 2rem;
+      margin-top: 30px;
+    }
+
+    p.subtitle {
+      color: #1a1a1a;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin: 20px 0;
+      color: #222;
+    }
+
+
+    .profile-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 30px;
+    }
+
+    
+    .profile-section iframe {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 10px;
+      display: block;
+      margin: auto;
+    }
+
+    .profile-text h2 {
+      color: #d62828;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .profile-text p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+        .section {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 20px auto;
+      max-width: 1200px;
+    }
+
+    .section img {
+      width: 50%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .section .text-box {
+      width: 50%;
+      padding: 40px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .blue-box {
+      background: linear-gradient(135deg, #0a2a6b, #1a3c8b);
+    }
+
+    .red-box {
+      background: linear-gradient(135deg, #b31217, #e52d27);
+    }
+
+    .text-box h2 {
+      margin: 0 0 15px;
+      font-size: 28px;
+    }
+
+    .text-box p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* Agar layout kebalik (gambar di kanan, teks di kiri) */
+    .reverse {
+      flex-direction: row-reverse;
+    }
+
+    .highlight {
+      display: inline-block;
+      background: #ffc107;
+      padding: 5px 15px;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .footer-info {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+    }
+
+    .footer-info img {
+      height: 50px;
+      margin: 0 10px;
+    }
+
+    .footer-info p {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+
+.footer {
+  background: #a80000; /* merah solid */
+  margin-top: 200px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-center {
+  text-align: center; /* Sosial Media di tengah */
+}
+
+.footer-logo {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.footer-col h3 {
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Copyright */
+.footer-bottom {
+  background: #000; /* hitam solid di bawah */
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.wrapper {
+  margin-left: 90px;
+  position: relative;
+  z-index: 0;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column; /* <-- bikin tombolnya tersusun ke bawah */
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.wrapper .button {
+  display: flex;
+  flex-direction: row; /* ikon di kiri, teks di kanan */
+  align-items: center;
+  gap: 10px; /* jarak antara ikon dan teks */
+  margin-top: -25px;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: transparent;
+  transition: all 0.3s ease-out;
+  /* padding: 5px 10px; */
+}
+
+.wrapper .button .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
+
+.wrapper .button .icon i {
+  font-size: 20px;
+  color: #fff;
+}
+
+.wrapper .button span {
+  /* display: block; */
+  font-size: 14px;
+  font-weight: 600;
+  color: aliceblue;
+}
