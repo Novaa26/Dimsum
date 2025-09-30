@@ -138,22 +138,22 @@ nav a:nth-child(5) { animation-delay: 1s; }
   animation: popup-bg 1.2s ease-out;
   }
   .img-left,.img-right {
-    margin-top: 900px;
+    margin-top: 800px;
   }
   .img-left {
   position: absolute;
-  left: 20px;
-  height: 550px;
+  left: 90px;
+  height: 350px;
   opacity: 0;
   animation: slideInLeft 1.5s ease forwards, spin 10s linear infinite;
   animation-delay: 0.5s, 1.7s;
 }
 
 .img-right {
-  width: 550px;
+  width: 350px;
   position: absolute;
-  right: 20px;
-  height: 550px;
+  right: 90px;
+  height: 350px;
   opacity: 0;
   animation: slideInRight 1.5s ease forwards, spin 10s linear infinite;
   animation-delay: 0.5s, 1.7s; 
