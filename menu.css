@@ -305,7 +305,7 @@ nav.big {
  /* Cart icon */
     .cart-icon {
       position: fixed;
-      top: 20px;
+      top: 120px;
       right: 20px;
       font-size: 1.4rem;
       background: #fff;
@@ -460,8 +460,12 @@ nav.big {
     }
 
     .cart-total {
+      /* align-items: center; */
+      width: 150px;
+      margin-left: 150px;
       font-weight:700;
-      margin-top:6px;
+      margin-top:30px;
+      margin-bottom: 30px;
       text-align:right;
     }
 

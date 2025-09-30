@@ -611,17 +611,33 @@ nav a:nth-child(5) { animation-delay: 1s; }
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-
 .insta-right {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.insta-right h2 {
-  margin-bottom: 15px;
-  font-weight: bold;
-  color: #222;
+.testimoni-list {
+  max-height: 400px;   /* tinggi area scroll */
+  overflow-y: auto;    /* bikin scroll */
+  padding-right: 10px; /* biar scrollbar ga nempel teks */
 }
 
+/* opsional scrollbar custom */
+.testimoni-list::-webkit-scrollbar {
+  width: 8px;
+}
+.testimoni-list::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+.testimoni-list::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 10px;
+}
+.testimoni-list::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
 .testimoni-card {
   display: flex;
   align-items: flex-start;
