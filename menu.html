@@ -14,9 +14,13 @@
       <div class="nav-left">
         <a href="index.html">Home</a>
         <a>Menu</a>
-        <a>Service</a>
       </div>
-      <div class="logo">Logo</div>
+      <div class="logo">
+        <a href="index.html">
+          <img src="aset/Untitled.jpg" alt="Logo" id="logo">
+        </a>
+      </div>
+
       <div class="nav-right">
         <a href="profile.html">Portfolio</a>
         <a href="lokasi.html">Lokasi</a>
@@ -33,7 +37,7 @@
       <a href="#" class="btn">Pesan Sekarang <i>🛒</i></a>
     </div>
     <div class="hero-img">
-      <img src="aset/dimsum jamur.webp" alt="Dimsum lezat">
+      <img src="aset/3dim.png" alt="Dimsum lezat">
     </div>
   </section>
 
@@ -55,7 +59,7 @@
       <div class="card-body">
         <h3>Dimsum</h3>
         <p>Isi: Daging ayam, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Dimsum', 3000)">Rp 3.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
@@ -63,7 +67,7 @@
       <div class="card-body">
         <h3>Dimsum Jamur</h3>
         <p>Isi: Daging ayam, Wortel, Jamur kuping</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Dimsum Jamur', 3000)">Rp 3.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
@@ -71,7 +75,7 @@
       <div class="card-body">
         <h3>Dimsum Mentai</h3>
         <p>Isi: Daging ayam, Wortel, Mentai, Rumput Laut</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Dimsum Mentai', 5000)">Rp 5.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
@@ -79,7 +83,7 @@
       <div class="card-body">
         <h3>Dimsum Mozarela</h3>
         <p>Isi: Daging ayam, Wortel, keju Mozarela</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Dimsum Mozarela', 4000)">Rp 4.000 <i>🛒</i></button>
       </div>
   </div>
 
@@ -88,7 +92,7 @@
       <div class="card-body">
         <h3>Bola Rambutan</h3>
         <p>Isi: Daging ayam, Kulit Pangsit</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Bola Rambutan', 3000)">Rp 3.000 <i>🛒</i></button>
       </div>
     </div>
 
@@ -97,7 +101,7 @@
       <div class="card-body">
         <h3>Keichak</h3>
         <p>Isi: Daging ayam, Wortel, Jamur Shitake, Baby Corn, Kulit Tahu</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Keichak', 3000)">Rp 3.000 <i>🛒</i></button>
       </div>
     </div>
 
@@ -106,7 +110,7 @@
       <div class="card-body">
         <h3>Lumpia Jamur</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel, Kecambah</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Lumpia Jamur', 3000)">Rp 3.000 <i>🛒</i></button>
       </div>
     </div>
 
@@ -115,7 +119,7 @@
       <div class="card-body">
         <h3>Cheong Fan</h3>
         <p>Isi: Daging ayam, Wortel buah, Jamur kuping</p>
-        <button class="btn" onclick="addToCart('Keichak', 16000)">Pesan Sekarang 🛒</button>
+        <button class="btn" onclick="addToCart('Cheong Fan', 3000)">Rp 3.000 <i>🛒</i></button>
       </div>
     </div>
 
@@ -124,7 +128,7 @@
       <div class="card-body">
         <h3>Gyoza</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn" onclick="addToCart('Lumpia Jamur', 17000)">Pesan Sekarang 🛒</button>
+        <button class="btn" onclick="addToCart('Gyoza', 4000)">Rp 4.000 <i>🛒</i></button>
       </div>
     </div>
 
@@ -133,7 +137,7 @@
       <div class="card-body">
         <h3>Ekado</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Ekado',3000)">Rp 3.000 <i>🛒</i></button>
       </div>
   </div>
 
@@ -150,7 +154,7 @@
       <div class="card-body">
         <h3>Ebi Furai</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Ebi Furai', 4000)">Rp 4.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
@@ -158,7 +162,7 @@
       <div class="card-body">
         <h3>Chiken Katsu</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Chiken Katsu', 6000)">Rp 6.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
@@ -166,7 +170,7 @@
       <div class="card-body">
         <h3>Enoki</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Enoki', 3000)">Rp 3.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
@@ -174,7 +178,7 @@
       <div class="card-body">
         <h3>Chiken Karage</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Chiken Karage', 8000)">Rp 8.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
@@ -182,7 +186,7 @@
       <div class="card-body">
         <h3>Kakiage</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Kakiage', 7000)">Rp 7.000 <i>🛒</i></button>
       </div>
   </div>
       <div class="card">
@@ -190,7 +194,7 @@
       <div class="card-body">
         <h3>Seaweed Rool</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Seaweed Rool', 6000)">Rp 6.000 <i>🛒</i></button>
       </div>
   </div>
       <div class="card">
@@ -198,7 +202,7 @@
       <div class="card-body">
         <h3>Fried Fries</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Fried Fries', 8000)">Rp 8.000 <i>🛒</i></button>
       </div>
   </div>
       <div class="card">
@@ -206,7 +210,7 @@
       <div class="card-body">
         <h3>Takoyaki</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Takoyaki', 10000)">Rp 10.000 <i>🛒</i></button>
       </div>
   </div>
         <div class="card">
@@ -214,7 +218,7 @@
       <div class="card-body">
         <h3>Corn Ribs</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Corn Ribs', 10000)">Rp 10.000 <i>🛒</i></button>
       </div>
   </div>
         <div class="card">
@@ -222,7 +226,7 @@
       <div class="card-body">
         <h3>Omelet</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Omelet', 10000)">Rp 10.000 <i>🛒</i></button>
       </div>
   </div>
   </div>
@@ -236,81 +240,81 @@
     <div class="card">
       <img src="aset/kornetsapi.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Ebi Furai</h3>
+        <h3>Kornet Sapi</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Kornet Sapi', 5000)">Rp 5.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
       <img src="aset/kornetayam.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Chiken Katsu</h3>
+        <h3>Kornet Ayam</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Kornet Ayam', 4000)">Rp 4.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
       <img src="aset/carbstick.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Enoki</h3>
+        <h3>Crab Stick</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Crab Stick', 2000)">Rp 2.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
       <img src="aset/dumpling.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Chiken Karage</h3>
+        <h3>Dumpling Keju</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Dumpling Keju',3000)">Rp 3.000 <i>🛒</i></button>
       </div>
   </div>
     <div class="card">
       <img src="aset/scallop.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Kakiage</h3>
+        <h3>scallop</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('scallop', 2000)">Rp 2.000 <i>🛒</i></button>
       </div>
   </div>
       <div class="card">
       <img src="aset/baksoudang.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Seaweed Rool</h3>
+        <h3>Baso Udang</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Baso Udang', 2000)">Rp 2.000 <i>🛒</i></button>
       </div>
   </div>
       <div class="card">
       <img src="aset/fishball.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Fried Fries</h3>
+        <h3>Baso Ikan</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Baso Ikan', 2000)">Rp 2.000 <i>🛒</i></button>
       </div>
   </div>
       <div class="card">
-      <img src="aset/carbstick.webp" alt="Dimsum">
+      <img src="aset/cikuwa.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Takoyaki</h3>
+        <h3>Cikuwa</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Cikuwa', 2000)">Rp 2.000 <i>🛒</i></button>
       </div>
   </div>
         <div class="card">
-      <img src="aset/corn ribs.webp" alt="Dimsum">
+      <img src="aset/cumi.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Corn Ribs</h3>
+        <h3>Cumi</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Cumi', 1000)">Rp 1.000 <i>🛒</i></button>
       </div>
   </div>
         <div class="card">
-      <img src="aset/omelet.webp" alt="Dimsum">
+      <img src="aset/dumplingayam.webp" alt="Dimsum">
       <div class="card-body">
-        <h3>Omelet</h3>
+        <h3>Dumpling Ayam</h3>
         <p>Isi: Daging ayam, Jamur kuping, Wortel</p>
-        <button class="btn">Pesan Sekarang <i>🛒</i></button>
+        <button class="btn" onclick="addToCart('Dumpling Ayam', 3000)">Rp 3.000 <i>🛒</i></button>
       </div>
   </div>
   </div>
@@ -344,7 +348,7 @@
   <div class="footer-container">
     <!-- Kolom 1 -->
     <div class="footer-col">
-      <img src="logo.png" alt="Dimsum Mr. San" class="footer-logo">
+      <img src="logo.png" alt="Dimsumlicious" class="footer-logo">
       <p>
         Kami menyajikan hidangan dimsum yang autentik dan berkualitas tinggi.
         Dengan bahan-bahan segar yang dipilih dengan teliti, kami menciptakan
@@ -353,34 +357,30 @@
     </div>
 
     <!-- Kolom 2 -->
-  <div class="footer-col footer-center">
-    <h3>Sosial Media</h3>
-    <div class="wrapper">
-      <div class="button">
-        <div class="icon"><i class="fab fa-tiktok"></i></div>
-        <span>@dimsumlicious</span>
-      </div>
-      <div class="button">
-        <div class="icon"><i class="fab fa-facebook-f"></i></div>
-        <span>dimsumlicious</span>
-      </div>
-      <div class="button">
-        <div class="icon"><i class="fab fa-instagram"></i></div>
-        <span>@dimsumlicious</span>
-      </div>
-      <div class="button">
-        <div class="icon"><i class="fab fa-whatsapp"></i></div>
-        <span>WhatsApp</span>
+    <div class="footer-col footer-center">
+      <h3>Sosial Media</h3>
+      <div class="wrapper">
+        <div class="button">
+          <div class="icon"><i class="fab fa-tiktok"></i></div>
+          <span><a href="https://www.tiktok.com/@dimsumlicious29?_t=ZS-909VsyApulz&_r=1">@dimsumlicious</a></span>
+        </div>
+        <div class="button">
+          <div class="icon"><i class="fab fa-instagram"></i></div>
+          <span><a href="https://www.instagram.com/dimsumlicuous?igsh=MWI3Y25ubXU0NTgxYg==">@dimsumlicious</a></span>
+        </div>
+        <div class="button">
+          <div class="icon"><i class="fab fa-whatsapp"></i></div>
+          <span><a href="https://wa.me/6285725968519">WhatsApp</a></span>
+        </div>
       </div>
     </div>
-  </div>
 
     <!-- Kolom 3 -->
     <div class="footer-col">
       <h3>Alamat & Kontak</h3>
       <ul>
         <li>📍 Jl. Wahidin Sudiro Husodo No.22, Bramen, Sekarsuli, Kec. Klaten Utara, Kabupaten Klaten, Jawa Tengah 57432</li>
-        <li>☎️ 0322 465 2603</li>
+        <li>☎️ 0857-2596-8519</li>
       </ul>
     </div>
   </div>
@@ -392,6 +392,29 @@
 </footer>
 
   <script>
+    // nav
+      const nav = document.querySelector("nav");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      nav.classList.add("big");   // nav membesar
+    } else {
+      nav.classList.remove("big"); // kembali normal
+    }
+  });
+    // logo
+      const logo = document.getElementById('logo');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      logo.classList.add('big');   // membesar
+    } else {
+      logo.classList.remove('big'); // kembali normal
+    }
+  });
+
+
+    // navbar
     const links = document.querySelectorAll("nav a");
     const indicator = document.querySelector("nav span");
     let currentLeft = 0;
@@ -434,66 +457,73 @@
       indicator.style.width = currentWidth + "px";
     });
 
+// fungsi keranjang
+let cart = [];
+let total = 0;
 
-    // fungsi keranjang
-  let cart = [];
-    let total = 0;
+function addToCart(product, price) {
+  cart.push({ product, price });
+  total += price;
+  updateCart(); // langsung update keranjang
+}
 
-    function addToCart(product, price) {
-      cart.push({ product, price });
-      total += price;
-      document.getElementById('cartCount').textContent = cart.length;
-      alert(product + " ditambahkan ke keranjang!");
-    }
+function removeFromCart(index) {
+  total -= cart[index].price;
+  cart.splice(index, 1);
+  updateCart();
+}
 
-    function removeFromCart(index) {
-      total -= cart[index].price;
-      cart.splice(index, 1);
-      updateCart();
-    }
+function updateCart() {
+  const cartItems = document.getElementById('cartItems');
+  cartItems.innerHTML = '';
+  cart.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <span>${item.product}</span>
+      <span>Rp ${item.price.toLocaleString()}</span>
+      <button class="remove-btn" onclick="removeFromCart(${index})">❌</button>
+    `;
+    cartItems.appendChild(div);
+  });
 
-    function updateCart() {
-      const cartItems = document.getElementById('cartItems');
-      cartItems.innerHTML = '';
-      cart.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `
-          <span>${item.product}</span>
-          <span>Rp ${item.price.toLocaleString()}</span>
-          <button class="remove-btn" onclick="removeFromCart(${index})">❌</button>
-        `;
-        cartItems.appendChild(div);
-      });
-      document.getElementById('cartTotal').textContent = "Total: Rp " + total.toLocaleString();
+  document.getElementById('cartTotal').textContent =
+    "Total: Rp " + total.toLocaleString();
 
-      const now = new Date();
-      const dateStr = now.toLocaleDateString("id-ID", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-      document.getElementById('purchaseDate').textContent = "Tanggal Pembelian: " + dateStr;
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("id-ID", {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+  document.getElementById('purchaseDate').textContent =
+    "Tanggal Pembelian: " + dateStr;
 
-      document.getElementById('cartCount').textContent = cart.length;
-    }
+  document.getElementById('cartCount').textContent = cart.length;
+}
 
-    document.getElementById('cartIcon').addEventListener('click', () => {
-      updateCart();
-      document.getElementById('cartModal').style.display = 'flex';
-    });
+document.getElementById('cartIcon').addEventListener('click', () => {
+  updateCart();
+  document.getElementById('cartModal').style.display = 'flex';
+});
 
-    function closeCart() {
-      document.getElementById('cartModal').style.display = 'none';
-    }
+function closeCart() {
+  document.getElementById('cartModal').style.display = 'none';
+}
 
-    function payNow() {
-      if(cart.length === 0) {
-        alert("Keranjang masih kosong!");
-        return;
-      }
-      alert("Pembayaran berhasil!\nTotal: Rp " + total.toLocaleString());
-      cart = [];
-      total = 0;
-      updateCart();
-      closeCart();
-    }
+function payNow() {
+  if (cart.length === 0) {
+    alert("Keranjang masih kosong!");
+    return;
+  }
+  alert("Pembayaran berhasil!\nTotal: Rp " + total.toLocaleString());
+  cart = [];
+  total = 0;
+  updateCart();
+  closeCart();
+}
+
   </script>
 </body>
 </html>

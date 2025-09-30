@@ -18,9 +18,10 @@
       justify-content: center;
       height: 40vh;
       /* opacity: 0.7; */
-      background-image: url(aset/Mount\ Fuji\ in\ Japan.webp);
+      background-image: url(aset/fuji.jpg);
       background-repeat: no-repeat;
       background-size: cover;
+      background-position: 10% 15%;
     }
     nav {
       position: fixed;
@@ -34,12 +35,26 @@
       justify-content: space-between;
       padding: 0 15px;
       z-index: 2;
+      transition: height 0.3s ease;
     }
+
+    /* efek saat scroll */
+nav.big {
+  height: 100px; /* nav lebih tinggi */
+}
     .nav-left,
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 40px;
+    }
+    .nav-left {
+      margin-left: 250px;
+      margin-right: -200px;
+    }
+    .nav-right {
+      margin-right: 200px;
+      margin-left: -200px;
     }
     nav a {
       position: relative;
@@ -52,22 +67,36 @@
       z-index: 1;
       cursor: pointer;
     }
+
     .logo {
-      font-size: 1.2em;
-      font-weight: bold;
-      color: yellow;
-      cursor: default;
+      flex: 1; /* supaya logo tetap di tengah */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    nav span {
+
+    .logo img {
+      height: 50px;   /* tinggi logo */
+      width: auto;    /* biar proporsional */
+      transition: all 0.3s ease;
+      border-radius: 8px; /* kalau mau ada rounded */
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    .logo img.big {
+  height: 80px;   /* ukuran lebih besar saat scroll */
+}
+    /* nav span {
       position: absolute;
       top: 22px;
-      height: 40%;
+      height: 30px;
       background-color: var(--bg);
       border: aliceblue 2px solid ;
       border-radius: 30px;
       z-index: 0;
       pointer-events: none;
-    }
+    } */
 
     @keyframes overshoot {
       0%   { left: var(--from-left); width: var(--from-width); }
@@ -199,17 +228,17 @@
 
     .footer-info {
       text-align: center;
-      margin-top: 40px;
+      margin-top: 90px;
       padding: 20px;
     }
 
     .footer-info img {
-      height: 50px;
-      margin: 0 10px;
+      height: 90px;
+      margin: 0 30px;
     }
 
     .footer-info p {
-      margin: 8px 0;
+      margin: 60px 0;
       font-size: 14px;
     }
 
@@ -316,7 +345,8 @@
   color: #fff;
 }
 
-.wrapper .button span {
+.wrapper .button span a {
+  text-decoration: none;
   /* display: block; */
   font-size: 14px;
   font-weight: 600;

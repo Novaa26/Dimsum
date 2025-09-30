@@ -20,6 +20,8 @@
       /* opacity: 0.7; */
       background-image: url(aset/f75986841978c5dea0b3c198a420f51b.jpg);
     }
+    
+
     nav {
       position: fixed;
       width: 100%;
@@ -32,46 +34,94 @@
       justify-content: space-between;
       padding: 0 15px;
       z-index: 2;
+      transition: height 0.3s ease;
     }
+
+    /* efek saat scroll */
+nav.big {
+  height: 100px; /* nav lebih tinggi */
+}
     .nav-left,
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 40px;
     }
-    nav a {
-      position: relative;
-      display: inline-block;
-      font-size: 1em;
-      font-weight: 900;
-      color: #000000;
-      text-decoration: none;
-      padding: 0 35px;
-      z-index: 1;
+    .nav-left {
+      margin-left: 250px;
+      margin-right: -200px;
+    }
+    .nav-right {
+      margin-right: 200px;
+      margin-left: -200px;
+    }
+nav a {
+  position: relative;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 900;
+  color: #000000;
+  text-decoration: none;
+  padding: 0 35px;
+  z-index: 1;
+  cursor: pointer;
+
+  opacity: 0;                /* awalnya transparan */
+  transform: translateY(-30px); /* mulai dari atas */
+  animation: slideDown 0.6s ease forwards;
+}
+
+/* kasih delay biar turun satu-satu */
+nav a:nth-child(1) { animation-delay: 0.2s; }
+nav a:nth-child(2) { animation-delay: 0.5s; }
+nav a:nth-child(3) { animation-delay: 0.8s; }
+nav a:nth-child(4) { animation-delay: 0.8s; }
+nav a:nth-child(5) { animation-delay: 1s; }
+
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+    .logo {
+      flex: 1; /* supaya logo tetap di tengah */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;   /* tinggi logo */
+      width: auto;    /* biar proporsional */
+      transition: all 0.3s ease;
+      border-radius: 8px; /* kalau mau ada rounded */
+      object-fit: contain;
       cursor: pointer;
     }
-    .logo {
-      font-size: 1.2em;
-      font-weight: bold;
-      color: yellow;
-      cursor: default;
-    }
-    nav span {
+
+    .logo img.big {
+  height: 80px;   /* ukuran lebih besar saat scroll */
+}
+    /* nav span {
       position: absolute;
       top: 22px;
-      height: 40%;
+      height: 30px;
       background-color: var(--bg);
       border: aliceblue 2px solid ;
       border-radius: 30px;
       z-index: 0;
       pointer-events: none;
-    }
+    } */
 
     @keyframes overshoot {
       0%   { left: var(--from-left); width: var(--from-width); }
       50%  { left: var(--overshoot-left); width: var(--to-width); }
       100% { left: var(--to-left); width: var(--to-width); }
     }
+
   .nama {
     background-image: url("aset/file_000000008718623085358ba98f4561a3.png");
     background-position: center;   /* Fokus di tengah gambar */
@@ -79,11 +129,80 @@
     width: 100%;                   /* Penuhi lebar layar */
     height: 80vh;                 /* Penuhi tinggi layar */
     display: flex;                 /* Untuk memudahkan penempatan konten di tengah */
-    justify-content: center;       
+    justify-content: center;
+    background-color: rgb(0, 0, 0);       
     align-items: center;
     position: relative;            /* Bisa untuk overlay jika diperlukan */
-      mix-blend-mode: lighten;
+      /* mix-blend-mode: lighten; */
+        /* animasi popup */
+  animation: popup-bg 1.2s ease-out;
   }
+  .img-left,.img-right {
+    margin-top: 900px;
+  }
+  .img-left {
+  position: absolute;
+  left: 20px;
+  height: 550px;
+  opacity: 0;
+  animation: slideInLeft 1.5s ease forwards, spin 10s linear infinite;
+  animation-delay: 0.5s, 1.7s;
+}
+
+.img-right {
+  width: 550px;
+  position: absolute;
+  right: 20px;
+  height: 550px;
+  opacity: 0;
+  animation: slideInRight 1.5s ease forwards, spin 10s linear infinite;
+  animation-delay: 0.5s, 1.7s; 
+}
+
+/* Animasi masuk dari kiri */
+@keyframes slideInLeft {
+  0% {
+    transform: translate(-200px, -50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
+}
+
+/* Animasi masuk dari kanan */
+@keyframes slideInRight {
+  0% {
+    transform: translate(200px, -50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, -50%);
+    opacity: 1;
+  }
+}
+
+/* Animasi berputar terus */
+@keyframes spin {
+  0%   { transform: translate(0, -50%) rotate(0deg); }
+  100% { transform: translate(0, -50%) rotate(360deg); }
+}
+  @keyframes popup-bg {
+  0% {
+    background-size: 30%; /* lebih zoom */
+    opacity: 0;
+  }
+  60% {
+    background-size: 40%;
+    opacity: 0.7;
+  }
+  100% {
+    background-size: 63%;
+    opacity: 1;
+  }
+}
+
   .menu {
     width: 100%;
     background-color: #000000;
@@ -189,6 +308,7 @@
     }
 
     .btn-more {
+      text-decoration: none;
       padding: 12px 25px;
       background: #ffdd00;
       color: #000;
@@ -197,6 +317,10 @@
       border: none;
       cursor: pointer;
       transition: background 0.2s;
+    }
+    .btn-more a {
+      text-decoration: none;
+      width: 20px;
     }
 
     .btn-more:hover {
@@ -209,29 +333,6 @@
       background-color: aliceblue;
     }
 
-    .cart-icon {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      font-size: 1.5rem;
-      background: #fff;
-      padding: 10px 15px;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background: red;
-      color: white;
-      font-size: 0.8rem;
-      padding: 2px 6px;
-      border-radius: 50%;
-    }
 
 
 
@@ -532,10 +633,11 @@
 }
 
 .testimoni-card img {
-  width: 45px;
-  height: 45px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  margin-right: 15px;
+  margin-right: 25px;
+  object-fit: cover;
 }
 
 .testimoni-card h4 {
@@ -655,7 +757,8 @@
   color: #fff;
 }
 
-.wrapper .button span {
+.wrapper .button span a {
+  text-decoration: none;
   /* display: block; */
   font-size: 14px;
   font-weight: 600;
